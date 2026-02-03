@@ -7,8 +7,8 @@ def start_game():
     user_guesses = 0
     print(secret_num)       # !!! למחוק בהרצה סופית !!!
 
-    with open("./guessing_record.txt", "r", encoding='utf-8') as f:
-        content = f.read().strip()
+    with open("../game_files/guessing_record.txt", "r", encoding='utf-8') as file:
+        content = file.read().strip()
         if content.isdigit():
             guessing_record = int(content)
         else:
@@ -22,7 +22,7 @@ def start_game():
 
 
 def boot_game(secret_num, user_guesses, guessing_record, player_name):
-    with open("./save_games.csv", "r", encoding='utf-8') as file:
+    with open("../game_files/save_games.csv", "r", encoding='utf-8') as file:
         reader = csv.reader(file)
         data_list = list(reader)
     if len(data_list) > 1:
