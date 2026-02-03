@@ -1,17 +1,23 @@
-from Game_start_boot import start_game, boot_game
+from game_start_boot import start_game, boot_game
 from check_win import check_win
 from save_data import save_game_data, save_players_wins
 
 
 # תחילת משחק
-def play_game():
-    secret_num, user_guesses, guessing_record, player_name = start_game()
+def play_game(player_name):
+    secret_num, user_guesses, guessing_record = start_game()
     secret_num, user_guesses, guessing_record, player_name = boot_game(secret_num, user_guesses, guessing_record, player_name)
+    print(f"\n\tSmallest guess record ever: {guessing_record}\n")
+    print(f"\t\t{secret_num}")       # !!! למחוק בהרצה סופית !!!
+    
     won = False
+    temp_user_number = 0
+    result = "Interrupted"
+
     while not won:
         user_number = input("\n\t\tGuess your number (0-500):  ")
         if user_number == "exit":
-            save_game_data(user_guesses, secret_num, temp_user_number, result)
+            save_game_data(player_name, user_guesses, secret_num, temp_user_number, result)
             break
         try:
             user_number = int(user_number)
@@ -29,4 +35,3 @@ def play_game():
         if won:
             save_players_wins(player_name, user_guesses)
             break
-        save_game_data(user_guesses, secret_num,user_number, result)
