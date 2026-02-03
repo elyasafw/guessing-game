@@ -15,16 +15,16 @@ def save_game_data(user_guesses, secret_num, user_number, result):
             dt = datetime.now()
             ts = dt.timestamp()
             row_to_add = [ts, user_guesses, secret_num, user_number, result]
-            with open("../game_files/save_games.csv", 'r+', encoding='utf-8') as file:
+            with open("game_files/save_games.csv", 'r+', encoding='utf-8') as file:
                 header = next(csv.reader(file))
-            with open("../game_files/save_games.csv", 'w', newline = "", encoding='utf-8') as file:
+            with open("game_files/save_games.csv", 'w', newline = "", encoding='utf-8') as file:
                 writer = csv.writer(file)
                 writer.writerow(header)
                 writer.writerow(row_to_add)
 
 
 def save_players_wins(player_name, user_guesses):   # שמירת השחקן עם השיא שלו
-    with open("../game_files/leaderboard.json", "r+") as lb:
+    with open("game_files/leaderboard.json", "r+") as lb:
         new_data = json.load(lb)
         
         # הוספה או עדכון של השחקן

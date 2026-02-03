@@ -7,11 +7,11 @@ def check_win(player_name, user_number, secret_num, guessing_record, user_guesse
 # בדיקת שבירת שיא ניצחונות
             if guessing_record == None:
                 print(f"\t\tWell done {player_name}! You broke the previous record for guesses ({guessing_record}).")
-                with open("../game_files/guessing_record.txt", "w") as f:
+                with open("game_files/guessing_record.txt", "w") as f:
                     f.write(str(user_guesses))
             elif user_guesses < int(guessing_record):
                 print(f"\t\tWell done {player_name}! You broke the previous record for guesses ({guessing_record}).")
-                with open("./guessing_record.txt", "w") as f:
+                with open("game_files/guessing_record.txt", "w") as f:
                     f.write(str(user_guesses))
             else:
                 print(f"\t\tThe record of guesses is: {guessing_record}, You failed to break the record.. Good luck next time :)")
